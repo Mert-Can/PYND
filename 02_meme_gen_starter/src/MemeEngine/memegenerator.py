@@ -73,7 +73,7 @@ class MemeEngine:
 
         img_name = self.url_tostring(img_path) # Get image path as string
 
-        img_name = img_name.split('/')[-1] # extract image name 
+        img_name = img_name.split('/')[-1].split('.')[0] # extract image name 
         
         output_path = self.output_dir + '/' + img_name # add image name to output_dir 
 
