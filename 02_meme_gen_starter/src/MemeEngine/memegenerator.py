@@ -64,12 +64,12 @@ class MemeEngine:
         img = img.resize((width, hsize), Image.ANTIALIAS)
 
         # Import a font type and set size
-        fnt = ImageFont.truetype(font='./Reglisse.otf', size=20)
+        fnt = ImageFont.truetype(font='./Reglisse.otf', size=24)
 
         # Write unto image
         d = ImageDraw.Draw(img)
         x, y = randint(10, 200), randint(10, 200)
-        d.text((x,y), body + ' - ' + author, font= fnt, fill=(255,255,255) )
+        d.text((x,y), body + ' - ' + author, font= fnt, fill=(0,0,0) )
 
         img_name = self.url_tostring(img_path) # Get image path as string
 

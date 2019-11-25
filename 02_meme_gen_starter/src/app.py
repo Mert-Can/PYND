@@ -23,7 +23,7 @@ def setup():
 
     # TODO: Use the Ingestor class to parse all files in the
     # quote_files variable
-    quotes = Ingestor.get_quotes(quote_files)
+    quotes = Ingestor.get_quotes(quote_files) 
 
     images_path = "./_data/photos/dog/"
 
