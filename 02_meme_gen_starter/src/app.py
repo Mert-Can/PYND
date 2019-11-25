@@ -18,7 +18,7 @@ def setup():
 
     quote_files = ['./_data/DogQuotes/DogQuotesTXT.txt',
                    './_data/DogQuotes/DogQuotesDOCX.docx',
-                   #'./_data/DogQuotes/DogQuotesPDF.pdf',
+                   './_data/DogQuotes/DogQuotesPDF.pdf',
                    './_data/DogQuotes/DogQuotesCSV.csv']
 
     # TODO: Use the Ingestor class to parse all files in the
@@ -29,7 +29,7 @@ def setup():
 
     # TODO: Use the pythons standard library os class to find all
     # images within the images images_path directory
-    imgs = [img for img in glob.glob(f'{images_path}/*.jpg')]
+    imgs = [img for img in glob.glob(f'{images_path}/*')]
 
     return quotes, imgs
 
@@ -48,6 +48,9 @@ def meme_rand():
     img = random.choice(imgs) 
     quote = random.choice(quotes)
     path = meme.make_meme(img, quote.body, quote.author)
+    print(quote.body)
+    from time import sleep
+    sleep(2)
     return render_template('meme.html', path=path)
 
 
