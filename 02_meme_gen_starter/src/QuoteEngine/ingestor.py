@@ -1,6 +1,6 @@
 import abc
 from docx import Document
-from pdftotext import PDF
+#from pdftotext import PDF
 import pandas as pd
 from QuoteEngine.quotemodel import QuoteModel
 import random
@@ -116,7 +116,10 @@ class PDFIngestor(IngestorInterface):
     def __init__(self):
         super().__init__()
 
+        
     def parse(self, path):
+        pass
+        """ 
         quotes =[]
         # Load your PDF
         with open(path, "rb") as f:
@@ -129,7 +132,8 @@ class PDFIngestor(IngestorInterface):
                 quote = line.split("-")
                 quotes.append(QuoteModel(quote[0], quote[1]))
         os.remove("./output.txt")
-        return quotes
+        return quotes 
+        """
 
 class CSVIngestor(IngestorInterface):
     

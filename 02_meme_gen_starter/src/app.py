@@ -29,7 +29,7 @@ def setup():
 
     # TODO: Use the pythons standard library os class to find all
     # images within the images images_path directory
-    imgs = [img for img in glob.glob(f'{images_path}/*')]
+    imgs = [img for img in glob.glob(f'{images_path}/*.jpg')]
 
     return quotes, imgs
 

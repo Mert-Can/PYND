@@ -11,6 +11,14 @@ from random import randint
     2. check_path: extracts raw form of an HttpResponse object 
     3. make_meme: reads in an image, transforms and adds a caption
                   to the image (body and author)
+
+    Example:
+
+    meme = MemeEngine("./output_dir")
+
+    output_path = meme.make_meme("path to image", "body of quote", "author of quote")
+
+    The output_path is the that path to the saved image which has been mememified
 """
 
 class MemeEngine:
@@ -64,12 +72,30 @@ class MemeEngine:
         img = img.resize((width, hsize), Image.ANTIALIAS)
 
         # Import a font type and set size
-        fnt = ImageFont.truetype(font='./Reglisse.otf', size=24)
+        shadowcolor = 'white'
+        fillcolor = 'black'
+        fnt = ImageFont.truetype(font='./Adventure.otf', size=24)
 
         # Write unto image
         d = ImageDraw.Draw(img)
         x, y = randint(10, 200), randint(10, 200)
-        d.text((x,y), body + ' - ' + author, font= fnt, fill=(0,0,0) )
+
+        # draw border over body
+        d.text((x-1, y), body, font=fnt, fill=shadowcolor)
+        d.text((x+1, y), body, font=fnt, fill=shadowcolor)
+        d.text((x, y-1), body, font=fnt, fill=shadowcolor)
+        d.text((x, y+1), body, font=fnt, fill=shadowcolor)
+
+        # draw over body
+        d.text((x,y), body, font= fnt, fill=fillcolor )
+        
+        # draw border over author
+        d.text((x-1, y+25), ' - ' + author, font=fnt, fill=shadowcolor)
+        d.text((x+1, y+25), ' - ' + author, font=fnt, fill=shadowcolor)
+        d.text((x, y+24), ' - ' + author, font=fnt, fill=shadowcolor)
+        d.text((x, y+26), ' - ' + author, font=fnt, fill=shadowcolor)
+        # draw over author
+        d.text((x, y+25), ' - ' + author, font=fnt, fill=fillcolor)
 
         img_name = self.url_tostring(img_path) # Get image path as string
 
