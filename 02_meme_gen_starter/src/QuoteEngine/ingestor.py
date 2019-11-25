@@ -1,6 +1,6 @@
 import abc
 from docx import Document
-#from pdftotext import PDF
+import PyPDF2
 import pandas as pd
 from QuoteEngine.quotemodel import QuoteModel
 import random
